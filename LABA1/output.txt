@@ -1,0 +1,189 @@
+Collions[hash1]=31
+Collions[hash2]=30
+Collions[hash3]=44
+tkrytoj
+[7]: Sushchestvuyut
+[8]: Hesh
+[9]: 
+[10]: otkrytoj
+[11]: adresaciej
+[12]: est
+[13]: operacii
+[14]: rol
+[15]: adresaciej
+[16]: tablica
+[17]: tablica
+[18]: 
+[19]: massiv
+[20]: cepochkami
+[21]: cepochkami
+[22]: varianta
+[23]: spiski
+[24]: tablice
+[25]: vychisleniya
+[26]: tablica
+[27]: massive
+[28]: soderzhit
+[29]: 
+[30]: 
+[31]: igraet
+[32]: hesh
+[33]: 
+[34]: 
+[35]: elementy
+[36]: ot
+[37]: nekotoryj
+[38]: 
+[39]: Poluchayushcheesya
+[40]: hesh
+[41]: i
+[42]: Vypolnenie
+[43]: s
+[44]: hesh
+[45]: funkcii
+[46]: hesh
+[47]: tablic
+[48]: 
+[49]: hesh
+[50]: hesh
+[51]: s
+[52]: kotorogo
+[53]: klyucha
+[54]: v
+[55]: s
+[56]: nachinaetsya
+[57]: znachenie
+[58]: v
+[59]: dva
+[60]: pary
+[61]: s
+[62]: ili
+[63]: 
+[0]: 
+[1]: 
+[2]: soderzhit
+[3]: adresaciej
+[4]: operacii
+[5]: massiv
+[6]: hesh
+[7]: dva
+[8]: tablica
+[9]: pary
+[10]: otkrytoj
+[11]: otkrytoj
+[12]: tablica
+[13]: tablic
+[14]: 
+[15]: par
+[16]: varianta
+[17]: indeksa
+[18]: tablica
+[19]: vychisleniya
+[20]: 
+[21]: nekotoryj
+[22]: tablice
+[23]: Sushchestvuyut
+[24]: znachenie
+[25]: elementy
+[26]: est
+[27]: 
+[28]: 
+[29]: ot
+[30]: ili
+[31]: 
+[32]: rol
+[33]: spiski
+[34]: hesh
+[35]: 
+[36]: hesh
+[37]: 
+[38]: Hesh
+[39]: 
+[40]: igraet
+[41]: i
+[42]: 
+[43]: hesh
+[44]: osnovnyh
+[45]: Poluchayushcheesya
+[46]: v
+[47]: klyucha
+[48]: nachinaetsya
+[49]: 
+[50]: hesh
+[51]: s
+[52]: s
+[53]: massive
+[54]: v
+[55]: s
+[56]: cepochkami
+[57]: cepochkami
+[58]: Vypolnenie
+[59]: funkcii
+[60]: kotorogo
+[61]: s
+[62]: hesh
+[63]: adresaciej
+[0]: Sushchestvuyut
+[1]: osnovnyh
+[2]: hesh
+[3]: igraet
+[4]: varianta
+[5]: indeksa
+[6]: est
+[7]: massiv
+[8]: pary
+[9]: tablica
+[10]: tablic
+[11]: 
+[12]: cepochkami
+[13]: 
+[14]: Hesh
+[15]: dva
+[16]: Vypolnenie
+[17]: operacii
+[18]: 
+[19]: hesh
+[20]: cepochkami
+[21]: 
+[22]: 
+[23]: funkcii
+[24]: vychisleniya
+[25]: klyucha
+[26]: nachinaetsya
+[27]: 
+[28]: tablica
+[29]: 
+[30]: soderzhit
+[31]: Poluchayushcheesya
+[32]: 
+[33]: par
+[34]: hesh
+[35]: otkrytoj
+[36]: tablice
+[37]: 
+[38]: ili
+[39]: 
+[40]: kotorogo
+[41]: i
+[42]: znachenie
+[43]: adresaciej
+[44]: nekotoryj
+[45]: tablica
+[46]: hesh
+[47]: hesh
+[48]: elementy
+[49]: 
+[50]: otkrytoj
+[51]: s
+[52]: s
+[53]: hesh
+[54]: v
+[55]: s
+[56]: adresaciej
+[57]: 
+[58]: v
+[59]: ot
+[60]: spiski
+[61]: s
+[62]: massive
+[63]: rol

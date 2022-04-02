@@ -1,0 +1,4 @@
+Sushchestvuyut dva osnovnyh varianta hesh-tablic: s cepochkami i otkrytoj adresaciej.
+Hesh-tablica soderzhit nekotoryj massiv, elementy kotorogo est' pary (hesh-tablica s otkrytoj adresaciej) ili spiski par (hesh-tablica s cepochkami).
+Vypolnenie operacii v hesh-tablice nachinaetsya s vychisleniya hesh-funkcii ot klyucha.
+Poluchayushcheesya hesh-znachenie igraet rol' indeksa v massive.
