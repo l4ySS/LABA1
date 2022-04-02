@@ -7,7 +7,7 @@ typedef std::string TValue;
 
 class HashTable {
 public:
-	virtual void insert(TKey key, TValue value) = 0;
+	virtual void insert(TValue value) = 0;
 	virtual bool remove(TKey key) = 0;
 	virtual bool find(TKey key) = 0;
 

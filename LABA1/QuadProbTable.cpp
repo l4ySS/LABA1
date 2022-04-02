@@ -1,7 +1,10 @@
-#include "QuadProbTable2.h"
+#include "QuadProbTable.h"
 #include <string>
 
-QuadraticProbingTable2::QuadraticProbingTable2(int tableSize) {
+#include "fstream"
+#include "iostream"
+QuadraticProbingTable::QuadraticProbingTable(int tableSize, TypeFunction NewHashFunction) {
+	this->HashFunction = NewHashFunction;
 	this->capacity = tableSize;
 	this->size = 0;
 	this->cells = new HashNode[tableSize];
@@ -9,7 +12,7 @@ QuadraticProbingTable2::QuadraticProbingTable2(int tableSize) {
 		cells[i].state = FREE;
 }
 
-QuadraticProbingTable2::QuadraticProbingTable2(const QuadraticProbingTable2& table) {
+QuadraticProbingTable::QuadraticProbingTable(const QuadraticProbingTable& table) {
 	this->capacity = table.capacity;
 	this->size = table.size;
 	this->cells = new HashNode[this->capacity];
@@ -22,21 +25,14 @@ QuadraticProbingTable2::QuadraticProbingTable2(const QuadraticProbingTable2& tab
 
 
 
-int QuadraticProbingTable2::hash(TValue value)
+int QuadraticProbingTable::hash(TValue value)
 {
-	int seed = 131;
-	unsigned long hash = 0;
-	for (int i = 0; i < value.length(); i++)
-	{
-		hash = (hash * seed) + value[i];
-	}
-	
-
-	return hash % capacity;
+	return abs((*HashFunction)(value)) % capacity;
 }
 
 
-void QuadraticProbingTable2::rehash() {
+
+void QuadraticProbingTable::rehash() {
 	// 0. Сохраняем старый массив cells в tempCells
 	// 1. Изменяем внутреннее состояние:
 	// изменяем capacity
@@ -58,39 +54,23 @@ void QuadraticProbingTable2::rehash() {
 
 	this->capacity *= 2;
 	this->size = 0;
+	delete[] cells;
 	this->cells = new HashNode[capacity];
 
 	for (int i = 0; i < capacity / 2; i++) {
 		if (tempCells[i].state == BUSY) {
-			insert(tempCells[i].key, tempCells[i].value);
+			insert(tempCells[i].value);
 		}
 	}
 
 	delete[] tempCells;
 }
 
-void QuadraticProbingTable2::insert(TKey key, TValue value) {
-	if (size == capacity) {
-		rehash();
-	}
-
-	int index = hash(key);
-	int k = 1;
-
-	while (cells[index].state == BUSY) {
-		index = (index + (k + k * k) / 2) % capacity;
-		k++;
-	}
-	
-	cells[index].key = key;
-	cells[index].value = value;
-	cells[index].state = BUSY;
-
-	size++;
-}
 
 
-void QuadraticProbingTable2::insert(TValue value) {
+
+
+void QuadraticProbingTable::insert(TValue value) {
 	if (size == capacity) {
 		rehash();
 	}
@@ -98,11 +78,12 @@ void QuadraticProbingTable2::insert(TValue value) {
 	int index = hash(value);
 	int k = 1;
 
+
 	while (cells[index].state == BUSY) {
-		index = (index + (k + k * k) / 2) % capacity;
+		index = (index + (k + k * k) / 2) % capacity; // треугольные числа, проход по всем если capacity = степень двойки
 		k++;
 	}
-
+	
 	cells[index].key = value;
 	cells[index].value = value;
 	cells[index].state = BUSY;
@@ -110,9 +91,7 @@ void QuadraticProbingTable2::insert(TValue value) {
 	size++;
 }
 
-
-
-bool QuadraticProbingTable2::remove(TKey key) {
+bool QuadraticProbingTable::remove(TKey key) {
 	int index = hash(key);
 	int iteration = 0;
 	int k = 1;
@@ -133,7 +112,7 @@ bool QuadraticProbingTable2::remove(TKey key) {
 }
 
 
-bool QuadraticProbingTable2::find(TKey key)
+bool QuadraticProbingTable::find(TKey key)
 {
 	int index = hash(key);
 	int iteration = 0;
@@ -147,7 +126,7 @@ bool QuadraticProbingTable2::find(TKey key)
 	return iteration != capacity && cells[index].state == BUSY;
 }
 
-TValue QuadraticProbingTable2::get(TKey key)
+TValue QuadraticProbingTable::get(TKey key)
 {
 	int index = hash(key);
 	int iteration = 0;
@@ -168,7 +147,7 @@ TValue QuadraticProbingTable2::get(TKey key)
 
 
 
-void QuadraticProbingTable2::clear()
+void QuadraticProbingTable::clear()
 {
 	for (int i = 0; i < capacity; i++)
 		cells[i].state = FREE;
@@ -176,17 +155,17 @@ void QuadraticProbingTable2::clear()
 	size = 0;
 }
 
-int QuadraticProbingTable2::getSize()
+int QuadraticProbingTable::getSize()
 {
 	return size;
 }
 
-bool QuadraticProbingTable2::isEmpty()
+bool QuadraticProbingTable::isEmpty()
 {
 	return size == 0;
 }
 
-void QuadraticProbingTable2::print() {
+void QuadraticProbingTable::print() {
 	for (int i = 0; i < capacity; i++) {
 		std::cout << "[" << i << "]: ";
 		if (cells[i].state == BUSY) {
@@ -196,7 +175,7 @@ void QuadraticProbingTable2::print() {
 	}
 }
 
-void QuadraticProbingTable2::printinFile(std::string Filename) {
+void QuadraticProbingTable::printinFile(std::string Filename) {
 	std::ofstream fout(Filename);
 	for (int i = 0; i < capacity; i++) {
 		fout << "[" << i << "]: ";
@@ -208,7 +187,7 @@ void QuadraticProbingTable2::printinFile(std::string Filename) {
 };
 
 
-QuadraticProbingTable2::~QuadraticProbingTable2()
+QuadraticProbingTable::~QuadraticProbingTable()
 {
 	clear();
 	delete[] cells;
@@ -216,12 +195,12 @@ QuadraticProbingTable2::~QuadraticProbingTable2()
 
 
 
-int QuadraticProbingTable2::CountColissions() {
+int QuadraticProbingTable::CountColissions() {
 	int count = 0;
 	for (int i = 0; i < capacity; i++) {
 		if ((cells[i].state != FREE) && (hash(cells[i].key) != i)) count++;
 	}
+
 	return count;
 };
-
 

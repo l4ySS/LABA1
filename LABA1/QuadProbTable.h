@@ -1,11 +1,10 @@
-
 #pragma once
 
 #include <iostream>
 #include "HashTable.h"
-#include "fstream"
 
-class QuadraticProbingTable2 : public HashTable {
+
+class QuadraticProbingTable : public HashTable {
 	int capacity;
 	int size;
 
@@ -21,12 +20,16 @@ class QuadraticProbingTable2 : public HashTable {
 
 	HashNode* cells;
 
-public:
-	QuadraticProbingTable2(int tableSize);
-	QuadraticProbingTable2(const QuadraticProbingTable2& table);
+	typedef int (*TypeFunction)(TValue);
+	TypeFunction HashFunction;
 
-	void insert(TKey key, TValue value);
+public:
+	QuadraticProbingTable(int tableSize, TypeFunction NewHashFunction);
+	QuadraticProbingTable(const QuadraticProbingTable& table);
+
+
 	void insert(TValue value);
+
 	bool remove(TKey key);
 	bool find(TKey key);
 
@@ -40,7 +43,7 @@ public:
 	void print();
 	void printinFile(std::string Filename);
 
-	~QuadraticProbingTable2();
+	~QuadraticProbingTable();
 
 
 
