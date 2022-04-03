@@ -3,6 +3,8 @@
 
 #include "fstream"
 #include "iostream"
+
+
 QuadraticProbingTable::QuadraticProbingTable(int tableSize, FunctionType NewHashFunction) {
 	this->HashFunction = NewHashFunction;
 	this->capacity = tableSize;
@@ -26,11 +28,11 @@ QuadraticProbingTable::QuadraticProbingTable(const QuadraticProbingTable& table)
 
 
 
-int QuadraticProbingTable::hash(TValue value)
-{
+	/*int QuadraticProbingTable::hash(TValue value)
+	{
 	
-   return abs(HashFunction(value)) % capacity;
-}
+	   return abs(HashFunction(value)) % capacity;
+	}*/
 
 
 
@@ -77,7 +79,7 @@ void QuadraticProbingTable::insert(TValue value) {
 		rehash();
 	}
 
-	int index = hash(value);
+	int index = abs(HashFunction(value)) % capacity;
 	int k = 1;
 
 	while (cells[index].state == BUSY) {
@@ -93,7 +95,7 @@ void QuadraticProbingTable::insert(TValue value) {
 }
 
 bool QuadraticProbingTable::remove(TKey key) {
-	int index = hash(key);
+	int index = abs(HashFunction(key)) % capacity;
 	int iteration = 0;
 	int k = 1;
 
@@ -115,7 +117,7 @@ bool QuadraticProbingTable::remove(TKey key) {
 
 bool QuadraticProbingTable::find(TKey key)
 {
-	int index = hash(key);
+	int index = abs(HashFunction(key)) % capacity;;
 	int iteration = 0;
 	int k = 1;
 
@@ -129,7 +131,7 @@ bool QuadraticProbingTable::find(TKey key)
 
 TValue QuadraticProbingTable::get(TKey key)
 {
-	int index = hash(key);
+	int index = abs(HashFunction(key)) % capacity;;
 	int iteration = 0;
 	int k = 1;
 
@@ -199,7 +201,7 @@ QuadraticProbingTable::~QuadraticProbingTable()
 int QuadraticProbingTable::CountColissions() {
 	int count = 0;
 	for (int i = 0; i < capacity; i++) {
-		if ((cells[i].state != FREE) && (hash(cells[i].key) != i)) count++;
+		if ((cells[i].state != FREE) && (abs(HashFunction(cells[i].key)) % capacity != i)) count++;
 	}
 
 	return count;

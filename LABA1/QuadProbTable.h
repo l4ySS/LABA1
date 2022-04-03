@@ -51,6 +51,6 @@ public:
 
 
 protected:
-	int hash(TValue value);
+//	int hash(TValue value);
 	void rehash();
 };
