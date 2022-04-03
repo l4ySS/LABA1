@@ -66,29 +66,26 @@ void inputText(QuadraticProbingTable& Table, string filename) {
         Table.insert(word);
     }
 
+    fin.close();
  }
 
 
 void testCollisions(string filein, string fileout) {
 
     ofstream fout(fileout);
-    ifstream fin(filein);
 
     QuadraticProbingTable Table1(64, &hash1);
     inputText(Table1, filein);
 
-    fin.seekg(0, fin.beg);
     QuadraticProbingTable Table2(64, &hash2);
     inputText(Table2, filein);
 
-    fin.seekg(0, fin.beg);
     QuadraticProbingTable Table3(64, &hash3);
     inputText(Table3, filein);
 
     fout << "Collions[hash1]=" << Table1.CountColissions() << '\n';
     fout << "Collions[hash2]=" << Table2.CountColissions() << '\n';
     fout << "Collions[hash3]=" << Table3.CountColissions() << '\n';
-    fin.close();
     fout.close();
 }
 

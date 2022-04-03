@@ -45,10 +45,7 @@ public:
 
 	~QuadraticProbingTable();
 
-
-
 	int CountColissions();
-
 
 protected:
 //	int hash(TValue value);
