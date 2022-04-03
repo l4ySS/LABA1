@@ -3,7 +3,7 @@
 
 #include "fstream"
 #include "iostream"
-QuadraticProbingTable::QuadraticProbingTable(int tableSize, TypeFunction NewHashFunction) {
+QuadraticProbingTable::QuadraticProbingTable(int tableSize, FunctionType NewHashFunction) {
 	this->HashFunction = NewHashFunction;
 	this->capacity = tableSize;
 	this->size = 0;
@@ -13,6 +13,7 @@ QuadraticProbingTable::QuadraticProbingTable(int tableSize, TypeFunction NewHash
 }
 
 QuadraticProbingTable::QuadraticProbingTable(const QuadraticProbingTable& table) {
+	this->HashFunction = table.HashFunction;
 	this->capacity = table.capacity;
 	this->size = table.size;
 	this->cells = new HashNode[this->capacity];
@@ -27,7 +28,8 @@ QuadraticProbingTable::QuadraticProbingTable(const QuadraticProbingTable& table)
 
 int QuadraticProbingTable::hash(TValue value)
 {
-	return abs((*HashFunction)(value)) % capacity;
+	
+   return abs(HashFunction(value)) % capacity;
 }
 
 
@@ -77,7 +79,6 @@ void QuadraticProbingTable::insert(TValue value) {
 
 	int index = hash(value);
 	int k = 1;
-
 
 	while (cells[index].state == BUSY) {
 		index = (index + (k + k * k) / 2) % capacity; // треугольные числа, проход по всем если capacity = степень двойки

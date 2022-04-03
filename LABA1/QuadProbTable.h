@@ -20,11 +20,11 @@ class QuadraticProbingTable : public HashTable {
 
 	HashNode* cells;
 
-	typedef int (*TypeFunction)(TValue);
-	TypeFunction HashFunction;
+	typedef int (*FunctionType)(TValue);
+	FunctionType HashFunction;
 
 public:
-	QuadraticProbingTable(int tableSize, TypeFunction NewHashFunction);
+	QuadraticProbingTable(int tableSize, FunctionType NewHashFunction);
 	QuadraticProbingTable(const QuadraticProbingTable& table);
 
 
