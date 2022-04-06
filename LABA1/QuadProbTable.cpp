@@ -5,7 +5,7 @@
 #include "iostream"
 
 
-QuadraticProbingTable::QuadraticProbingTable(int tableSize, FunctionType NewHashFunction) {
+QuadraticProbingTable::QuadraticProbingTable(int tableSize, TFunction NewHashFunction) {
 	this->HashFunction = NewHashFunction;
 	this->capacity = tableSize;
 	this->size = 0;
@@ -37,12 +37,12 @@ QuadraticProbingTable::QuadraticProbingTable(const QuadraticProbingTable& table)
 
 
 void QuadraticProbingTable::rehash() {
-	// 0. Сохраняем старый массив cells в tempCells
-	// 1. Изменяем внутреннее состояние:
-	// изменяем capacity
-	// выделяем память под ячейки в соответствии с capacity (массив cells)
-	// 2. Переносим ячейки из старой таблицы в новую:
-	// 3. Освободить память, занимаемую массивом tempCells.
+	// 0. Г‘Г®ГµГ°Г Г­ГїГҐГ¬ Г±ГІГ Г°Г»Г© Г¬Г Г±Г±ГЁГў cells Гў tempCells
+	// 1. Г€Г§Г¬ГҐГ­ГїГҐГ¬ ГўГ­ГіГІГ°ГҐГ­Г­ГҐГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ:
+	// ГЁГ§Г¬ГҐГ­ГїГҐГ¬ capacity
+	// ГўГ»Г¤ГҐГ«ГїГҐГ¬ ГЇГ Г¬ГїГІГј ГЇГ®Г¤ ГїГ·ГҐГ©ГЄГЁ Гў Г±Г®Г®ГІГўГҐГІГ±ГІГўГЁГЁ Г± capacity (Г¬Г Г±Г±ГЁГў cells)
+	// 2. ГЏГҐГ°ГҐГ­Г®Г±ГЁГ¬ ГїГ·ГҐГ©ГЄГЁ ГЁГ§ Г±ГІГ Г°Г®Г© ГІГ ГЎГ«ГЁГ¶Г» Гў Г­Г®ГўГіГѕ:
+	// 3. ГЋГ±ГўГ®ГЎГ®Г¤ГЁГІГј ГЇГ Г¬ГїГІГј, Г§Г Г­ГЁГ¬Г ГҐГ¬ГіГѕ Г¬Г Г±Г±ГЁГўГ®Г¬ tempCells.
 
 	int tempSize = capacity;
 	HashNode* tempCells = new HashNode[tempSize];
@@ -83,7 +83,7 @@ void QuadraticProbingTable::insert(TValue value) {
 	int k = 1;
 
 	while (cells[index].state == BUSY) {
-		index = (index + (k + k * k) / 2) % capacity; // треугольные числа, проход по всем если capacity = степень двойки
+		index = (index + (k + k * k) / 2) % capacity; // ГІГ°ГҐГіГЈГ®Г«ГјГ­Г»ГҐ Г·ГЁГ±Г«Г , ГЇГ°Г®ГµГ®Г¤ ГЇГ® ГўГ±ГҐГ¬ ГҐГ±Г«ГЁ capacity = Г±ГІГҐГЇГҐГ­Гј Г¤ГўГ®Г©ГЄГЁ
 		k++;
 	}
 	
